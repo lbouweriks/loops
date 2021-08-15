@@ -1,6 +1,7 @@
 let cijfer;
 let randomNumber;
 let name;
+let tries = 5;
 function start() {
   name = prompt("Welkom! Wat is je naam?");
   game(name);
@@ -23,15 +24,21 @@ function guess() {
   let guessNumber = prompt("raad een nummer tussen 1 en " + cijfer);
   if (guessNumber != randomNumber) {
     alert("Dat is niet correct");
-    guess();
+    tries--;
+    if (tries === 0) lose();
+    else guess();
   } else {
-    end();
+    win();
   }
 }
 
-function end() {
+function win() {
   alert("Gefeliciteerd je hebt gewonnen");
   alert("Dag " + name);
+}
+
+function lose() {
+  alert("Je hebt verloren.");
 }
 
 start();
